@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DuoPlus</string>
+    <string name="welcome">Bem Vindo</string>
+    <string name="haveSign">Você possui cadastro?</string>
+    <string name="navigation_drawer_open">Drawer Open</string>
+    <string name="navigation_drawer_close">Drawer Closed</string>
+
+</resources>
