@@ -4,5 +4,6 @@
     <string name="haveSign">Você possui cadastro?</string>
     <string name="navigation_drawer_open">Drawer Open</string>
     <string name="navigation_drawer_close">Drawer Closed</string>
+    <string name="title_activity_my_info">MyInfo</string>
 
 </resources>

@@ -1,7 +1,8 @@
-package com.example.duoplus;
+package com.example.duoplus.view;
 
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
+import android.os.Parcelable;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +10,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.duoplus.R;
+import com.example.duoplus.dal.UserDAO;
+import com.example.duoplus.model.User;
+
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText edtEmail;
     private EditText edtPassword;
     private Button btnRegister;
+
+    User userLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (checkLoginFields()) {
                     goToWelcomePage();
+                } else {
+                    displayMensage("E-mail ou senha invalido");
                 }
             }
         });
@@ -44,16 +54,19 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToRegisterPage();
+                goToListPage();
             }
         });
+    }
 
-
-
+    private void goToListPage(){
+        Intent intentList = new Intent(this, List.class);
+        startActivity(intentList);
     }
 
     private void goToWelcomePage(){
         Intent intentWelcome = new Intent(this, Welcome.class);
+        intentWelcome.putExtra("object", userLogin);
         startActivity(intentWelcome);
     }
 
@@ -64,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveUser() {
         User user = new User();
-
 
         user.setUserEmail(edtEmail.toString());
         user.setUserPassword(edtPassword.toString());
@@ -82,11 +94,17 @@ public class MainActivity extends AppCompatActivity {
             displayMensage("Email inválido");
             return false;
         } else {
-            return true;
+            userLogin = UserDAO.userLogin(this, edtEmail.getText().toString(), edtPassword.getText().toString());
+
+            if (userLogin == null) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 
-    private void displayMensage(String mensage) {
+    public void displayMensage(String mensage) {
         Toast.makeText(MainActivity.this, mensage,
                 Toast.LENGTH_LONG).show();
     }

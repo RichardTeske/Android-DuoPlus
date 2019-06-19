@@ -9,9 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Welcome"></activity>
-        <activity android:name=".Register" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.MyEnvironment"></activity>
+        <activity android:name=".view.ConfigDevice" />
+        <activity android:name=".view.ConfigEnvironment" />
+        <activity android:name=".view.MyPlan" />
+        <activity android:name=".view.Congrats" />
+        <activity android:name=".view.PlanConfirm" />
+        <activity android:name=".view.PlanPage" />
+        <activity android:name=".view.MyInfo" />
+        <activity android:name=".view.Welcome" />
+        <activity android:name=".view.Register" />
+        <activity android:name=".view.List" />
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

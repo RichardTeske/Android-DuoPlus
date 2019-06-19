@@ -4,7 +4,7 @@
     android:background="@drawable/backgroud"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:fitsSystemWindows="true">>
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -95,7 +95,7 @@
                 android:hint="CPF"
                 android:inputType="number"
                 android:background="@drawable/field_borders"
-                android:maxLength="11"/>
+                android:maxLength="14"/>
 
 
         </RelativeLayout>
@@ -118,7 +118,7 @@
                 android:hint="Data de Nascimento"
                 android:inputType="number"
                 android:background="@drawable/field_borders"
-                android:maxLength="8"/>
+                android:maxLength="10"/>
 
         </RelativeLayout>
 
@@ -140,7 +140,7 @@
                 android:hint="CEP"
                 android:inputType="number"
                 android:background="@drawable/field_borders"
-                android:maxLength="8"/>
+                android:maxLength="9"/>
 
         </RelativeLayout>
 
@@ -153,16 +153,14 @@
                 android:id="@+id/edtAddress"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
+                android:background="@drawable/field_borders"
                 android:ems="10"
-                android:fontFamily="serif"
 
+                android:fontFamily="serif"
                 android:gravity="center"
                 android:hint="Logradouro"
                 android:inputType="text"
-                android:background="@drawable/field_borders"
-                android:maxLength="100"/>
+                android:maxLength="100" />
 
         </RelativeLayout>
 
@@ -172,7 +170,7 @@
             android:layout_weight="5">
 
             <EditText
-                android:id="@+id/edtAdressNumber"
+                android:id="@+id/edtPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
@@ -181,10 +179,10 @@
                 android:fontFamily="serif"
 
                 android:gravity="center"
-                android:hint="Número"
+                android:hint="(DDD) Telefone"
                 android:inputType="number"
                 android:background="@drawable/field_borders"
-                android:maxLength="8"/>
+                android:maxLength="15"/>
 
         </RelativeLayout>
 
@@ -194,7 +192,7 @@
             android:layout_weight="5">
 
             <EditText
-                android:id="@+id/edtComplement"
+                android:id="@+id/edtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
@@ -203,7 +201,7 @@
                 android:fontFamily="serif"
 
                 android:gravity="center"
-                android:hint="Complemento"
+                android:hint="E-mail"
                 android:inputType="text"
                 android:background="@drawable/field_borders"
                 android:maxLength="100"/>
