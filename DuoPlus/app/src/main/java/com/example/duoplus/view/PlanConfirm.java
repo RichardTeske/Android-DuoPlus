@@ -1,6 +1,15 @@
 package com.example.duoplus.view;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +34,8 @@ public class PlanConfirm extends AppCompatActivity {
     TextView txtNamePlan, txtValuePlan, txtQtdPlan, txtNameConfirmPlan;
     Button btnCancel, btnConfirm;
     ImageView imgPlan;
+
+    public static final String NOTIFICATION_CHANNEL_ID = "channel_id";
 
 
     @Override
@@ -64,6 +75,7 @@ public class PlanConfirm extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkPlan()) {
+                    sendNotification();
                     goToCongratsPage();
                 }
             }
@@ -76,6 +88,25 @@ public class PlanConfirm extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private void sendNotification(){
+
+        NotificationManager mNotifyManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        NotificationCompat.Builder mBuilder = (NotificationCompat.Builder)
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(R.drawable.emot)
+                        .setContentTitle("Prabéns!")
+                        .setContentText("Você adquiriu o plano "+plan.getPlanName());
+        Intent resultIntent = new Intent(this, MyPlan.class);
+        resultIntent.putExtra("objectUser", user);
+        PendingIntent resultPendingIntent = PendingIntent
+                .getActivity(this, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(resultPendingIntent);
+        Notification notification = mBuilder.build();
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        mNotifyManager.notify(1, notification);
 
     }
 

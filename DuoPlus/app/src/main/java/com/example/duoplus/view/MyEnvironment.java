@@ -1,6 +1,7 @@
 package com.example.duoplus.view;
 
 import android.content.DialogInterface;
+import android.media.Image;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,6 +25,8 @@ import com.example.duoplus.model.Environment;
 import com.example.duoplus.model.User;
 import com.example.duoplus.model.UserEnvironment;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class MyEnvironment extends AppCompatActivity {
@@ -41,6 +45,8 @@ public class MyEnvironment extends AppCompatActivity {
 
     private ListView lstMyEnv;
 
+    private ImageButton btnLampada;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -49,11 +55,33 @@ public class MyEnvironment extends AppCompatActivity {
         setContentView(R.layout.activity_my_environment);
 
         lstMyEnv = (ListView) findViewById(R.id.lstMyEnv);
+        btnLampada = (ImageButton) findViewById(R.id.btnLampada);
 
         init();
 
         final CustomListAdapter adapter = creatingViewList();
         lstMyEnv.setAdapter(adapter);
+
+        btnLampada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    URL url = new URL("192.168.0.1/ReleOn");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+                    conn.setReadTimeout(10000 /* milliseconds */);
+                    conn.setConnectTimeout(15000 /* milliseconds */);
+                    conn.setRequestMethod("GET");
+                    conn.setDoInput(true);
+                    // Starts the query
+                    conn.connect();
+                } catch (Exception e) {
+                    e.getMessage();
+                }
+
+            }
+        });
 
         lstMyEnv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
