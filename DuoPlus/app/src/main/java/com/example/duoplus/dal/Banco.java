@@ -16,6 +16,8 @@ import com.example.duoplus.model.UserEnvironment;
 
 import java.util.ArrayList;
 
+import javax.xml.transform.Templates;
+
 public class Banco extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Database.db";
@@ -34,6 +36,7 @@ public class Banco extends SQLiteOpenHelper {
                     Contrato.UserTable.USER_CPF + TEXT_TYPE + VIRGULA +
                     Contrato.UserTable.USER_BORNDATE + TEXT_TYPE + VIRGULA +
                     Contrato.UserTable.USER_CEP + TEXT_TYPE + VIRGULA +
+                    Contrato.UserTable.USER_TEST + TEXT_TYPE + VIRGULA +
                     Contrato.UserTable.USER_ADDRESS + TEXT_TYPE + VIRGULA +
                     Contrato.UserTable.USER_PHONENUMBER + TEXT_TYPE + VIRGULA +
                     Contrato.UserTable.USER_EMAIL + TEXT_TYPE + VIRGULA +
@@ -125,12 +128,32 @@ public class Banco extends SQLiteOpenHelper {
         values.put(Contrato.UserTable.USER_CEP, user.getUserCEP());
         values.put(Contrato.UserTable.USER_ADDRESS, user.getUserAddress());
         values.put(Contrato.UserTable.USER_PHONENUMBER, user.getUserPhoneNumber());
+        values.put(Contrato.UserTable.USER_TEST, user.getUserTest());
         values.put(Contrato.UserTable.USER_EMAIL, user.getUserEmail());
         values.put(Contrato.UserTable.USER_PASSWORD, user.getUserPassword());
         values.put(Contrato.UserTable.USER_PLANID, user.getIdPlan());
 
         return db.insert(Contrato.UserTable.TABLE_NAME, null, values);
 
+    }
+
+    public int editUser(User user) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(Contrato.UserTable.USER_NAME, user.getUserName());
+        values.put(Contrato.UserTable.USER_CPF, user.getUserCPF());
+        values.put(Contrato.UserTable.USER_BORNDATE, user.getUserBornDate());
+        values.put(Contrato.UserTable.USER_CEP, user.getUserCEP());
+        values.put(Contrato.UserTable.USER_ADDRESS, user.getUserAddress());
+        values.put(Contrato.UserTable.USER_PHONENUMBER, user.getUserPhoneNumber());
+        values.put(Contrato.UserTable.USER_TEST, user.getUserTest());
+        values.put(Contrato.UserTable.USER_EMAIL, user.getUserEmail());
+        values.put(Contrato.UserTable.USER_PASSWORD, user.getUserPassword());
+        values.put(Contrato.UserTable.USER_PLANID, user.getIdPlan());
+
+        return db.update(Contrato.UserTable.TABLE_NAME, values, Contrato.UserTable.COLUMN_ID+"="+user.getUserId(), null);
     }
 
     public User setUserPlan(String idPlan, int idUser){
@@ -173,6 +196,7 @@ public class Banco extends SQLiteOpenHelper {
                 "userCEP, " +
                 "userAddress, " +
                 "userPhoneNumber, " +
+                "userTest, "+
                 "userEmail, " +
                 "userPassword, " +
                 "planId " +
@@ -191,9 +215,10 @@ public class Banco extends SQLiteOpenHelper {
             u.setUserCEP(cursor.getString(4));
             u.setUserAddress(cursor.getString(5));
             u.setUserPhoneNumber(cursor.getString(6));
-            u.setUserEmail(cursor.getString(7));
-            u.setUserPassword(cursor.getString(8));
-            u.setIdPlan(cursor.getString(9));
+            u.setUserTest(cursor.getString(7));
+            u.setUserEmail(cursor.getString(8));
+            u.setUserPassword(cursor.getString(9));
+            u.setIdPlan(cursor.getString(10));
 
         } else {
             u = null;
@@ -305,6 +330,7 @@ public class Banco extends SQLiteOpenHelper {
                 Contrato.UserTable.USER_CEP,
                 Contrato.UserTable.USER_ADDRESS,
                 Contrato.UserTable.USER_PHONENUMBER,
+                Contrato.UserTable.USER_TEST,
                 Contrato.UserTable.USER_EMAIL,
                 Contrato.UserTable.USER_PASSWORD,
                 Contrato.UserTable.USER_PLANID
@@ -325,9 +351,10 @@ public class Banco extends SQLiteOpenHelper {
                 u.setUserCEP(cursor.getString(4));
                 u.setUserAddress(cursor.getString(5));
                 u.setUserPhoneNumber(cursor.getString(6));
-                u.setUserEmail(cursor.getString(7));
-                u.setUserPassword(cursor.getString(8));
-                u.setIdPlan(cursor.getString(9));
+                u.setUserTest(cursor.getString(7));
+                u.setUserEmail(cursor.getString(8));
+                u.setUserPassword(cursor.getString(9));
+                u.setIdPlan(cursor.getString(10));
 
                 users.add(u);
             } while (cursor.moveToNext());
@@ -515,6 +542,7 @@ public class Banco extends SQLiteOpenHelper {
                 "userCEP, " +
                 "userAddress, " +
                 "userPhoneNumber, " +
+                "userTest, "+
                 "userEmail, " +
                 "userPassword, " +
                 "planId " +
@@ -532,9 +560,10 @@ public class Banco extends SQLiteOpenHelper {
             u.setUserCEP(cursor.getString(4));
             u.setUserAddress(cursor.getString(5));
             u.setUserPhoneNumber(cursor.getString(6));
-            u.setUserEmail(cursor.getString(7));
-            u.setUserPassword(cursor.getString(8));
-            u.setIdPlan(cursor.getString(9));
+            u.setUserTest(cursor.getString(7));
+            u.setUserEmail(cursor.getString(8));
+            u.setUserPassword(cursor.getString(9));
+            u.setIdPlan(cursor.getString(10));
         } else {
             u = null;
         }

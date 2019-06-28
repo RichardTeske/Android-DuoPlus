@@ -15,6 +15,11 @@ public class UserDAO {
         return banco.createUser(user);
     }
 
+    public static int editUser(Context context, User user) {
+        Banco banco = new Banco(context);
+        return banco.editUser(user);
+    }
+
     public static ArrayList<User> userList(Context context) {
         Banco banco = new Banco(context);
         return banco.getUsersList();

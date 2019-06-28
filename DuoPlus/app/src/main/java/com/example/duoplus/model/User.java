@@ -12,6 +12,8 @@ public class User implements Serializable {
     private String userPassword;
     private String userCPF;
     private String userBornDate;
+
+    private String userTest;
     private String userCEP;
     private String userAddress;
     private String userPhoneNumber;
@@ -86,6 +88,7 @@ public class User implements Serializable {
                 "\nEmail: "+getUserEmail()+
                 "\nCPF: "+getUserCPF()+
                 "\nData de Nascimento: "+getUserBornDate()+
+                "\nTeste: "+getUserTest()+
                 "\nCEP: "+getUserCEP()+
                 "\nEndereço: "+getUserAddress()+
                 "\nTelefone: "+getUserPhoneNumber()+
@@ -106,5 +109,13 @@ public class User implements Serializable {
 
     public void setIdPlan(String idPlan) {
         this.idPlan = idPlan;
+    }
+
+    public String getUserTest() {
+        return userTest;
+    }
+
+    public void setUserTest(String userTest) {
+        this.userTest = userTest;
     }
 }

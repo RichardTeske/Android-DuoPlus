@@ -97,7 +97,7 @@ public class PlanConfirm extends AppCompatActivity {
         NotificationCompat.Builder mBuilder = (NotificationCompat.Builder)
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.emot)
-                        .setContentTitle("Prabéns!")
+                        .setContentTitle("Parabéns!")
                         .setContentText("Você adquiriu o plano "+plan.getPlanName());
         Intent resultIntent = new Intent(this, MyPlan.class);
         resultIntent.putExtra("objectUser", user);

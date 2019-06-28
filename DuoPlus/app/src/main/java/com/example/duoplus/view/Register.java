@@ -23,6 +23,7 @@ public class Register extends AppCompatActivity {
     private EditText edtCEP;
     private EditText edtAddress;
     private EditText edtPhoneNumber;
+    //private EditText edtTest;
     private EditText edtEmail;
     private EditText edtPassword;
     private EditText edtConfirmPassword;
@@ -44,6 +45,7 @@ public class Register extends AppCompatActivity {
         edtCEP = (EditText) findViewById(R.id.edtCEP);
         edtCEP.addTextChangedListener(Mask.insert(Mask.CEP_MASK, edtCEP));
         edtPhoneNumber = (EditText) findViewById(R.id.edtPhoneNumber);
+        //edtTest = (EditText) findViewById(R.id.edtTest);
         edtPhoneNumber.addTextChangedListener(Mask.insert(Mask.CELULAR_MASK, edtPhoneNumber));
         edtAddress = (EditText) findViewById(R.id.edtAddress);
         edtEmail = (EditText) findViewById(R.id.edtEmail);
@@ -63,6 +65,8 @@ public class Register extends AppCompatActivity {
                     user.setUserBornDate(edtBornDate.getText().toString());
                     user.setUserCEP(edtCEP.getText().toString());
                     user.setUserAddress(edtAddress.getText().toString());
+                    user.setUserTest("");
+                    //user.setUserTest(edtTest.getText().toString());
                     user.setUserPhoneNumber(edtPhoneNumber.getText().toString());
                     user.setUserPassword(edtPassword.getText().toString());
                     user.setUserEmail(edtEmail.getText().toString());
@@ -129,6 +133,9 @@ public class Register extends AppCompatActivity {
         } else if (edtPhoneNumber.getText().toString().equals("")) {
             displayMensage("Preencha o campo Telefone");
             return false;
+        //} else if (edtTest.getText().toString().equals("")) {
+        //    displayMensage("Preencha o campo Teste");
+        //    return false;
         } else if (edtEmail.getText().toString().equals("")) {
             displayMensage("Preencha o campo E-mail");
             return false;

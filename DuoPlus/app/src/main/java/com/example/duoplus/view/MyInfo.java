@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class MyInfo extends AppCompatActivity {
     private TextView txtCPF;
     private TextView txtAddress;
     private TextView txtCEP;
+    private TextView txtTest;
     private TextView txtPhoneNumber;
     private TextView txtBornDate;
     private TextView txtName;
@@ -43,6 +45,7 @@ public class MyInfo extends AppCompatActivity {
         txtCPF = (TextView) findViewById(R.id.txtCPF);
         txtAddress = (TextView) findViewById(R.id.txtAddress);
         txtCEP = (TextView) findViewById(R.id.txtCEP);
+        //txtTest = (TextView) findViewById(R.id.txtTest);
         txtPhoneNumber = (TextView) findViewById(R.id.txtPhoneNumber);
         txtBornDate = (TextView) findViewById(R.id.txtBornDate);
         txtName = (TextView) findViewById(R.id.txtName);
@@ -57,23 +60,23 @@ public class MyInfo extends AppCompatActivity {
         txtCPF.setText(user.getUserCPF());
         txtAddress.setText(user.getUserAddress());
         txtCEP.setText(user.getUserCEP());
+        //txtTest.setText(user.getUserTest());
         txtPhoneNumber.setText(user.getUserPhoneNumber());
         txtBornDate.setText(user.getUserBornDate());
         txtName.setText(user.getUserName());
 
         if (!user.getIdPlan().equals("")) {
+            System.out.println(user.getIdPlan());
             plan = PlanDAO.planById(this, Integer.valueOf(user.getIdPlan()));
             txtActivePlan.setText(plan.getPlanName());
         } else {
             txtActivePlan.setText("Sem plano ativo!");
         }
 
-
-
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                goToEditPage();
             }
         });
 
@@ -95,6 +98,13 @@ public class MyInfo extends AppCompatActivity {
     public void displayMensage(String mensage) {
         Toast.makeText(this, mensage,
                 Toast.LENGTH_LONG).show();
+    }
+
+    public void goToEditPage(){
+
+        Intent intent = new Intent(this, EditUser.class);
+        intent.putExtra("object", user);
+        startActivity(intent);
     }
 
 }

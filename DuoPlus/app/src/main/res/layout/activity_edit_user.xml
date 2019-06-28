@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
-                android:text="Insira as informações abaixo"
+                android:text="Edite as informações abaixo"
                 android:textSize="20sp" />
 
         </RelativeLayout>
@@ -165,26 +165,26 @@
         </RelativeLayout>
 
         <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5">
-
-        <EditText
-            android:id="@+id/edtPhoneNumber"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:ems="10"
-            android:fontFamily="serif"
+            android:layout_height="0dp"
+            android:layout_weight="5">
 
-            android:gravity="center"
-            android:hint="(DDD) Telefone"
-            android:inputType="number"
-            android:background="@drawable/field_borders"
-            android:maxLength="15"/>
+            <EditText
+                android:id="@+id/edtPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:ems="10"
+                android:fontFamily="serif"
 
-    </RelativeLayout>
+                android:gravity="center"
+                android:hint="(DDD) Telefone"
+                android:inputType="number"
+                android:background="@drawable/field_borders"
+                android:maxLength="15"/>
+
+        </RelativeLayout>
 
 
         <RelativeLayout
@@ -232,29 +232,6 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5">
-
-            <EditText
-                android:id="@+id/edtConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:ems="10"
-                android:fontFamily="serif"
-
-                android:gravity="center"
-                android:hint="Confimar Senha"
-                android:inputType="textPassword"
-                android:background="@drawable/field_borders"
-                android:maxLength="30"/>
-
-
-        </RelativeLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -263,12 +240,12 @@
 
 
             <Button
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnEditar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_borders_register"
+                android:background="@drawable/btn_borders_edit"
                 android:fontFamily="serif"
-                android:text="Registrar"
+                android:text="Editar"
                 android:textAllCaps="false"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />

@@ -15,6 +15,7 @@ public class Contrato {
         public static final String USER_CPF = "userCPF";
         public static final String USER_BORNDATE = "userBornDate";
         public static final String USER_CEP = "userCEP";
+        public static final String USER_TEST = "userTest";
         public static final String USER_ADDRESS = "userAddress";
         public static final String USER_PHONENUMBER = "userPhoneNumber";
         public static final String USER_EMAIL = "userEmail";
